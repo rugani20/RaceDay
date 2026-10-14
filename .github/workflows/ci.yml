@@ -1,0 +1,41 @@
+# NOTE: in your real repository this file must live at the REPOSITORY ROOT: .github/workflows/ci.yml
+name: RaceDay CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate repository structure
+        run: |
+          test -d docs || (echo "Missing /docs folder" && exit 1)
+          test -f README.md || (echo "Missing README.md" && exit 1)
+          test -d Part2-API/src/RaceDay.Api || (echo "Missing Part2-API API project" && exit 1)
+          test -d Part2-API/tests/RaceDay.Tests || (echo "Missing Part2-API test project" && exit 1)
+          ls docs
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+        working-directory: Part2-API
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+        working-directory: Part2-API
+
+      - name: Run unit tests
+        run: dotnet test --no-build --configuration Release --verbosity normal
+        working-directory: Part2-API
