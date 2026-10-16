@@ -29,6 +29,7 @@ builder.Services.AddSession(o =>
     o.IdleTimeout = TimeSpan.FromMinutes(30);
 });
 
+//fix failing enrolment test
 
 //add users table model
 builder.Services.AddControllers();
