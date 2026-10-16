@@ -26,6 +26,8 @@ builder.Services.AddSession(o =>
     o.IdleTimeout = TimeSpan.FromMinutes(30);
 });
 
+
+//add users table model
 builder.Services.AddControllers();
 
 // ---- Swagger ----
