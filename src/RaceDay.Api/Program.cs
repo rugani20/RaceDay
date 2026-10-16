@@ -28,6 +28,7 @@ builder.Services.AddSession(o =>
     o.Cookie.IsEssential = true;
     o.IdleTimeout = TimeSpan.FromMinutes(30);
 });
+//upadte readme and api usage notes
 
 //fix failing enrolment test
 
