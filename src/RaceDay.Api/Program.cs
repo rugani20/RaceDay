@@ -4,7 +4,7 @@ using RaceDay.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ---- Database (EF Core, SQL Server). The "Testing" environment uses an in-memory database for the unit tests. ----
+// ---- add Database (EF Core, SQL Server). The "Testing" environment uses an in-memory database for the unit tests. ----
 if (builder.Environment.IsEnvironment("Testing"))
 {
     var testDbName = "RaceDayTests-" + Guid.NewGuid();
