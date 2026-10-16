@@ -38,6 +38,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new()
     {
+        //fix login returning wrong status code
         Title = "RaceDay API",
         Version = "v1",
         Description = "Event management API for South African road running, walking and cycling events. " +
