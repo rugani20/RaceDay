@@ -64,6 +64,7 @@ using (var scope = app.Services.CreateScope())
     else db.Database.EnsureCreated();
     DbSeeder.Seed(db);
 }
+// add session middleware
 //added program.cs services registration
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RaceDay API v1"));
