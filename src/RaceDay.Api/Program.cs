@@ -59,7 +59,7 @@ using (var scope = app.Services.CreateScope())
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RaceDay API v1"));
 
-//
+//add project folder structure
 if (!app.Environment.IsEnvironment("Testing")) app.UseHttpsRedirection();
 
 app.UseSession();
