@@ -17,7 +17,7 @@ else
     builder.Services.AddDbContext<AppDbContext>(o =>
         o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 }
-
+//add refactor controllers to use DTOs
 // ---- Session management (server-side session stores UserId + Role) ----
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(o =>
