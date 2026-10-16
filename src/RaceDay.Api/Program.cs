@@ -14,7 +14,7 @@ if (builder.Environment.IsEnvironment("Testing"))
 else
 {
     //add xml comments to controllers
-
+    //implement userservice interface
     //add seed data for categories
     builder.Services.AddDbContext<AppDbContext>(o =>
         o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
