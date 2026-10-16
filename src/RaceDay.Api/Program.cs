@@ -48,7 +48,7 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Event management API for South African road running, walking and cycling events. " +
                       "Log in via POST /api/auth/login first - the session cookie is then sent automatically by Swagger UI."
     });
-
+    // add swagger authorise swagger
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
