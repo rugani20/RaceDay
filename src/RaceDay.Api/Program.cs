@@ -53,7 +53,7 @@ builder.Services.AddSwaggerGen(c =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
 });
-
+//fix nullabale warnings in models
 var app = builder.Build();
 
 // ---- Create/migrate the database and seed sample data ----
