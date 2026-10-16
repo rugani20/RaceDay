@@ -62,6 +62,8 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RaceDay API
 //add project folder structure
 if (!app.Environment.IsEnvironment("Testing")) app.UseHttpsRedirection();
 
+
+//add events model with navigation properties
 app.UseSession();
 app.MapControllers();
 app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
