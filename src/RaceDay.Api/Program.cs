@@ -42,6 +42,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new()
     {
+        //update migration with role constraint
         //fix login returning wrong status code
         Title = "RaceDay API",
         Version = "v1",
