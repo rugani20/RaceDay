@@ -25,7 +25,7 @@ builder.Services.AddSession(o =>
     o.Cookie.IsEssential = true;
     o.IdleTimeout = TimeSpan.FromMinutes(30);
 });
-//
+
 builder.Services.AddControllers();
 
 // ---- Swagger ----
@@ -44,7 +44,7 @@ builder.Services.AddSwaggerGen(c =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
 });
-
+//add EF Core and Swagger packages
 var app = builder.Build();
 
 // ---- Create/migrate the database and seed sample data ----
