@@ -12,6 +12,7 @@ if (builder.Environment.IsEnvironment("Testing"))
 }
 else
 {
+    //add xml comments to controllers
 
     //add seed data for categories
     builder.Services.AddDbContext<AppDbContext>(o =>
