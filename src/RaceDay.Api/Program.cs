@@ -82,3 +82,4 @@ app.Run();
 //fix login returning wrong status code
 // Makes Program visible to the test project (WebApplicationFactory<Program>).
 public partial class Program { }
+//add result validation
