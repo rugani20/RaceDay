@@ -43,6 +43,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new()
     {
         //update migration with role constraint
+        //add project folder structure
         //fix login returning wrong status code
         Title = "RaceDay API",
         Version = "v1",
