@@ -12,6 +12,8 @@ if (builder.Environment.IsEnvironment("Testing"))
 }
 else
 {
+
+    //add seed data for categories
     builder.Services.AddDbContext<AppDbContext>(o =>
         o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 }
