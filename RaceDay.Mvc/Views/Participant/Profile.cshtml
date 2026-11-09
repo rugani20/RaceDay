@@ -1,0 +1,20 @@
+@model ProfileVm
+@{ ViewData["Title"] = "Profile"; }
+<h2 class="rd-h">My Profile</h2>
+<div class="row g-4">
+ <div class="col-md-4"><div class="card rd-card p-3 text-center">
+   <img src="@(string.IsNullOrEmpty(Model.ProfilePictureUrl) ? "/img/avatar.svg" : Model.ProfilePictureUrl)" class="rd-avatar mx-auto mb-3" alt="Profile picture" />
+   <form asp-action="UploadPicture" method="post" enctype="multipart/form-data">
+     <input type="file" name="picture" accept="image/*" class="form-control mb-2" required />
+     <button class="btn btn-rd w-100">Upload picture</button>
+   </form>
+ </div></div>
+ <div class="col-md-8"><div class="card rd-card p-4">
+  <form asp-action="Profile" method="post">
+   <div class="mb-3"><label asp-for="FullName" class="form-label"></label><input asp-for="FullName" class="form-control" /><span asp-validation-for="FullName" class="text-danger"></span></div>
+   <div class="mb-3"><label asp-for="Email" class="form-label"></label><input asp-for="Email" class="form-control" readonly /></div>
+   <div class="mb-3"><label asp-for="Phone" class="form-label"></label><input asp-for="Phone" class="form-control" /><span asp-validation-for="Phone" class="text-danger"></span></div>
+   <button class="btn btn-rd">Save changes</button>
+  </form>
+ </div></div>
+</div>

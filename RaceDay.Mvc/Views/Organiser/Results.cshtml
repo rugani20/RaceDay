@@ -1,0 +1,18 @@
+@model List<ResultEntryVm>
+@{ ViewData["Title"] = "Results"; }
+<h2 class="rd-h">Results: @ViewBag.EventName</h2>
+@if (!(bool)ViewBag.Concluded) { <div class="alert alert-warning">This event has not taken place yet. You can enter results once it concludes.</div> }
+else if (!Model.Any()) { <div class="alert alert-info">No participants to record results for.</div> }
+else {
+<form asp-action="Results" method="post">
+ <input type="hidden" name="eventId" value="@ViewBag.EventId" />
+ <div class="table-responsive"><table class="table rd-table align-middle">
+ <thead><tr><th>Participant</th><th>Category</th><th>Finish time (hh:mm:ss)</th><th>Finishing position</th></tr></thead>
+ <tbody>@for (int i = 0; i < Model.Count; i++) {
+  <tr><td>@Model[i].ParticipantName<input type="hidden" name="entries[@i].EnrolmentId" value="@Model[i].EnrolmentId" /></td><td>@Model[i].CategoryName</td>
+  <td><input name="entries[@i].FinishTime" value="@Model[i].FinishTime" class="form-control" placeholder="01:23:45" /></td>
+  <td><input name="entries[@i].Position" type="number" min="1" value="@Model[i].Position" class="form-control" /></td></tr>
+ }</tbody></table></div>
+ <button class="btn btn-rd">Publish results</button>
+</form> }
+<a asp-action="Events" class="btn btn-link">&larr; Back to events</a>

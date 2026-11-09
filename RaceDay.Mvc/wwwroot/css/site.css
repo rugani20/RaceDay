@@ -1,0 +1,19 @@
+:root { --rd-navy:#0d1b2a; --rd-orange:#ff5a1f; --rd-bg:#f4f6f9; --rd-green:#1e9e57; --rd-amber:#f2a900; --rd-red:#d64545; }
+body { font-family:'Inter',sans-serif; background:var(--rd-bg); color:#1b263b; }
+.rd-h, .rd-brand { font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
+.rd-nav { background:var(--rd-navy); border-bottom:4px solid var(--rd-orange); }
+.rd-brand { font-size:1.7rem; color:#fff !important; } .rd-brand span { color:var(--rd-orange); }
+.rd-role { background:var(--rd-orange); }
+.btn-rd { background:var(--rd-orange); color:#fff; font-weight:600; border:0; } .btn-rd:hover { background:#e04a10; color:#fff; }
+.rd-card { border:0; border-radius:12px; box-shadow:0 2px 10px rgba(13,27,42,.08); }
+.rd-hero { background:linear-gradient(120deg,var(--rd-navy),#1b3a5c); color:#fff; border-radius:12px; padding:2rem; border-left:8px solid var(--rd-orange); }
+.rd-hero h1 { font-size:2.5rem; margin:0; }
+.rd-banner { height:170px; object-fit:cover; } .rd-banner-lg { width:100%; max-height:320px; object-fit:cover; } .rd-banner-sm { max-height:100px; border-radius:8px; }
+.rd-type { background:var(--rd-navy); }
+.rd-avatar { width:140px; height:140px; border-radius:50%; object-fit:cover; border:4px solid var(--rd-orange); display:block; }
+.rd-stat { padding:1.2rem; border:0; border-radius:12px; background:var(--rd-navy); color:#fff; text-transform:uppercase; font-size:.85rem; }
+.rd-stat span { display:block; font-family:'Barlow Condensed',sans-serif; font-size:2.6rem; color:var(--rd-orange); }
+.rd-table { background:#fff; border-radius:12px; overflow:hidden; } .rd-table thead { background:var(--rd-navy); color:#fff; }
+.status { padding:.25rem .7rem; border-radius:20px; font-size:.8rem; font-weight:600; color:#fff; }
+.status-confirmed { background:var(--rd-green); } .status-pending { background:var(--rd-amber); color:#222; } .status-cancelled { background:var(--rd-red); } .status-other { background:#6c757d; }
+.rd-footer { background:var(--rd-navy); color:#aab4c3; margin-top:2rem; }

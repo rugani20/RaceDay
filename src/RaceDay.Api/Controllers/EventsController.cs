@@ -96,7 +96,7 @@ public class EventsController : ApiControllerBase
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status403Forbidden)]
-    public async Task<ActionResult<EventDto>> CreateEvent(EventRequest request)
+    public async Task<ActionResult<EventDto>> CreateEvent([FromForm] EventRequest request)
     {
         var ev = new Event
         {

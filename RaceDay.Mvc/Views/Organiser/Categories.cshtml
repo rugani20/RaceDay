@@ -1,0 +1,18 @@
+@model List<CategoryDto>
+@{ ViewData["Title"] = "Categories"; int eventId = ViewBag.EventId; }
+<h2 class="rd-h">Categories: @ViewBag.EventName</h2>
+<div class="card rd-card p-3 mb-4">
+<form asp-action="AddCategory" method="post" class="row g-2">
+  <input type="hidden" name="EventId" value="@eventId" />
+  <div class="col-md-5"><input name="Name" class="form-control" placeholder="e.g. Under 18, 35-39, 10 km" required /></div>
+  <div class="col-md-4"><select name="CategoryType" class="form-select"><option value="Age">Age</option><option value="Distance">Distance</option></select></div>
+  <div class="col-md-3 d-grid"><button class="btn btn-rd">Add category</button></div>
+</form></div>
+@if (!Model.Any()) { <div class="alert alert-info">No categories yet.</div> }
+else {
+<table class="table rd-table align-middle"><thead><tr><th>Name</th><th>Type</th><th></th></tr></thead>
+<tbody>@foreach (var c in Model) {
+ <tr><td>@c.Name</td><td>@c.CategoryType</td><td class="text-end">
+ <form asp-action="DeleteCategory" method="post" onsubmit="return confirm('Remove this category?');"><input type="hidden" name="id" value="@c.Id" /><input type="hidden" name="eventId" value="@eventId" /><button class="btn btn-sm btn-outline-danger">Remove</button></form></td></tr>
+}</tbody></table> }
+<a asp-action="Events" class="btn btn-link">&larr; Back to events</a>

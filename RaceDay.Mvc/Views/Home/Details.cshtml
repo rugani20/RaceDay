@@ -1,0 +1,31 @@
+@model EventDto
+@{ ViewData["Title"] = Model.Name; var cats = (List<CategoryDto>)ViewBag.Categories; var role = Context.Session.GetString("Role"); }
+<div class="card rd-card overflow-hidden">
+  <img src="@(string.IsNullOrEmpty(Model.BannerUrl) ? "/img/placeholder.svg" : Model.BannerUrl)" class="rd-banner-lg" alt="@Model.Name banner" />
+  <div class="card-body p-4">
+    <span class="badge rd-type">@Model.EventType</span>
+    <h1 class="rd-h mt-2">@Model.Name</h1>
+    <p>@Model.Description</p>
+    <ul class="list-unstyled">
+      <li>📅 <strong>@Model.EventDate.ToString("dddd, dd MMMM yyyy")</strong></li>
+      <li>📍 @Model.Location</li><li>🏁 @Model.DistanceKm km</li>
+    </ul>
+    <h4 class="rd-h mt-4">Categories</h4>
+    @if (!cats.Any()) { <p class="text-muted">No categories have been added yet.</p> }
+    else { <ul>@foreach (var c in cats) { <li>@c.Name <small class="text-muted">(@c.CategoryType)</small></li> }</ul> }
+
+    @if (role == "Participant" && cats.Any() && Model.EventDate.Date >= DateTime.Today)
+    {
+      <form asp-controller="Participant" asp-action="Enrol" method="post" class="row g-2 mt-2">
+        <input type="hidden" name="eventId" value="@Model.Id" />
+        <div class="col-md-6"><select name="categoryId" class="form-select" required>
+          <option value="">Select a category...</option>
+          @foreach (var c in cats) { <option value="@c.Id">@c.Name</option> }
+        </select></div>
+        <div class="col-md-3 d-grid"><button class="btn btn-rd">Enrol now</button></div>
+      </form>
+    }
+    else if (role == null) { <a asp-controller="Account" asp-action="Login" class="btn btn-rd">Log in to enrol</a> }
+    <a asp-action="Index" class="btn btn-link mt-2">&larr; Back to events</a>
+  </div>
+</div>

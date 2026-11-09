@@ -1,0 +1,11 @@
+@model List<EnrolmentDto>
+@{ ViewData["Title"] = "Enrolments"; }
+<h2 class="rd-h">Enrolments: @ViewBag.EventName</h2>
+@if (!Model.Any()) { <div class="alert alert-info">No participants have enrolled yet.</div> }
+else {
+<div class="table-responsive"><table class="table rd-table align-middle">
+<thead><tr><th>Participant</th><th>Category</th><th>Enrolled</th><th>Status</th></tr></thead>
+<tbody>@foreach (var e in Model) {
+ <tr><td>@e.ParticipantName</td><td>@e.CategoryName</td><td>@e.EnrolledAt.ToString("dd MMM yyyy")</td><td><span class="status @Ui.StatusClass(e.Status)">@e.Status</span></td></tr>
+}</tbody></table></div> }
+<a asp-action="Events" class="btn btn-link">&larr; Back to events</a>

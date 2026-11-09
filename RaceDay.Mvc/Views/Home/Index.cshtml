@@ -1,0 +1,31 @@
+@model List<EventDto>
+@{ ViewData["Title"] = "Upcoming Events"; }
+<div class="rd-hero mb-4"><h1 class="rd-h">FIND YOUR NEXT RACE</h1><p class="mb-0">Browse upcoming events and enrol in minutes.</p></div>
+<form method="get" class="row g-2 mb-4">
+  <div class="col-md-4"><input name="search" value="@ViewBag.Search" class="form-control" placeholder="Search name or location" /></div>
+  <div class="col-md-3"><select name="type" class="form-select">
+    <option value="">All types</option>
+    @foreach (var t in new[] { "Road Run", "Trail Run", "Cycling", "Triathlon", "Walk" }) { <option value="@t" selected="@(ViewBag.Type == t)">@t</option> }
+  </select></div>
+  <div class="col-md-3"><input type="date" name="from" value="@ViewBag.From" class="form-control" /></div>
+  <div class="col-md-2 d-grid"><button class="btn btn-rd">Filter</button></div>
+</form>
+@if (!Model.Any()) { <div class="alert alert-info">No upcoming events match your filters.</div> }
+<div class="row g-4">
+@foreach (var e in Model)
+{
+  <div class="col-md-6 col-lg-4"><div class="card rd-card h-100">
+    <img src="@(string.IsNullOrEmpty(e.BannerUrl) ? "/img/placeholder.svg" : e.BannerUrl)" class="card-img-top rd-banner" alt="@e.Name banner" />
+    <div class="card-body">
+      <span class="badge rd-type">@e.EventType</span>
+      <h5 class="card-title mt-2">@e.Name</h5>
+      <p class="mb-1 small">📅 @e.EventDate.ToString("dd MMM yyyy")</p>
+      <p class="mb-1 small">📍 @e.Location</p>
+                    <p class="mb-0 small">👥 Up to @e.MaxParticipants participants</p>
+
+
+    </div>
+    <div class="card-footer bg-transparent border-0 pb-3"><a asp-action="Details" asp-route-id="@e.Id" class="btn btn-rd w-100">View details</a></div>
+  </div></div>
+}
+</div>
